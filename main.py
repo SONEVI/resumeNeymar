@@ -48,7 +48,7 @@ def text_handle(message):
     elif message.text.strip() == "Проверь свои знания.":
         bot.send_poll(message.chat.id, question='Кому Неймар забил первый гол за Барселону?',
                       options=('Атлетико', 'Реал Мадрид', 'Депортиво', 'Хетафе'),
-                      type='quiz', correct_option=0,
+                      type='quiz', correct_option_id=0,
                       explanation='Каталонцы сумели отыграться на 66-й минуте благодаря точному удару Неймара. Для '
                                   'бразильца '
                                   'этот мяч стал первым за испанский клуб в официальных матчах. Больше соперники '
