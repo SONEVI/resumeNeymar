@@ -22,6 +22,8 @@ def start(m, res=False):
     markup.add(item1)
     item2 = telebot.types.KeyboardButton("Позвоните мне.")
     markup.add(item2)
+    item3 = telebot.types.KeyboardButton("Проверь свои знания.")
+    markup.add(item3)
     button_phone = telebot.types.KeyboardButton(text="Отправить телефон", request_contact=True)
     markup.add(button_phone)
     bot.send_message(m.chat.id, 'Приветствую. Я бот, который дает резюме и инфо о людях. Выбери кнопку ниже, '
@@ -43,15 +45,17 @@ def contact(message):
 def text_handle(message):
     if message.text.strip() == 'Позвоните мне.':
         bot.send_contact(message.chat.id, '+1234567890', 'Неймар', 'Джуниор')
-    bot.send_poll(message.chat.id, question='Кому Неймар забил первый гол за Барселону?',
-                  options=('Атлетико', 'Реал Мадрид', 'Депортиво', 'Хетафе'),
-                  type='quiz', correct_option=0,
-                  explanation='Каталонцы сумели отыграться на 66-й минуте благодаря точному удару Неймара. Для '
-                              'бразильца '
-                              'этот мяч стал первым за испанский клуб в официальных матчах. Больше соперники голов не '
-                              'забивали — матч завершился со счетом 1:1. Ответная встреча состоится 28 августа в '
-                              'Барселоне.',
-                  close_date=1704063600)
+    elif message.text.strip() == "Проверь свои знания.":
+        bot.send_poll(message.chat.id, question='Кому Неймар забил первый гол за Барселону?',
+                      options=('Атлетико', 'Реал Мадрид', 'Депортиво', 'Хетафе'),
+                      type='quiz', correct_option=0,
+                      explanation='Каталонцы сумели отыграться на 66-й минуте благодаря точному удару Неймара. Для '
+                                  'бразильца '
+                                  'этот мяч стал первым за испанский клуб в официальных матчах. Больше соперники '
+                                  'голов не '
+                                  'забивали — матч завершился со счетом 1:1. Ответная встреча состоится 28 августа в '
+                                  'Барселоне.',
+                      close_date=1704063600)
 
 
 @bot.message_handler(content_types=['document'])
