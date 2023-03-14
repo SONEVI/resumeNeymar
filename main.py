@@ -53,6 +53,11 @@ def text_handle(message):
                                   'удару Неймара. Для бразильца этот мяч стал первым за испанский клуб в официальных '
                                   'матчах.',
                       close_date=1704063600)
+    elif message.text.strip() == 'Неймар Джуниор.':
+        with open("kontakts.txt", "rb") as file:
+            f = file.read()
+
+        bot.send_document(message.chat.id, f, "kontakts.txt")
 
 
 @bot.message_handler(content_types=['document'])
