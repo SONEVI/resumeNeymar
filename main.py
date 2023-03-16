@@ -24,6 +24,8 @@ def start(m, res=False):
     markup.add(item2)
     item3 = telebot.types.KeyboardButton("Проверь свои знания.")
     markup.add(item3)
+    item4 = telebot.types.KeyboardButton("Голос Неймара.")
+    markup.add(item4)
     button_phone = telebot.types.KeyboardButton(text="Отправить телефон", request_contact=True)
     markup.add(button_phone)
     bot.send_message(m.chat.id, 'Приветствую. Я бот, который дает резюме и инфо о людях. Выбери кнопку ниже, '
@@ -58,6 +60,9 @@ def text_handle(message):
             f = file.read()
 
         bot.send_document(message.chat.id, f, "kontakts.txt")
+    elif message.text.strip() == 'Голос Неймара.':
+        with open(r'neymar_voice.mp3', 'rb') as audio:
+            bot.send_audio(message.from_user.id, audio)
 
 
 @bot.message_handler(content_types=['document'])
